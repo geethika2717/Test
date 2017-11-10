@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28300\viewh15280\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 Feature : ATM\
+\
+Scenario: Successful login with pin\
+Given I have entered my card in the ATM slot\
+When i enter my Pin\
+Then I should see the menu<menu>\
+\
+| Menu |\
+| 
+\f1\fs22 Cash withdrawal without receipt |\
+| Cash withdrawal with receipt |\
+| Balance |\
+\pard\pardeftab720\ri380\sl276\slmult1
+\cf0 | Cancel |
+\f0\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\
+Scenario outline : invalid card\
+Given that the user is having a card on his account\
+when he enters wrong card in to the machine\
+Then the ATM rejects the card\
+\
+\
+Scenario Outline: invalid pin\
+Given that the user enters card in to the machine\
+When user enters an invalid pin\
+Then the ATM displays invalid Pin number message\
+And asks the user to enter a valid pin \
+Then the user enters an invalid pin for the second time again\
+And ATM machine displays  invalid pin message and asks the user to enter the right pin\
+Then the user enters the invalid pin and the machine keeps the card\
+}
